@@ -1,24 +1,22 @@
-def reverseList(head):
-    prev, curr = None, head
-    while curr:
-        next_node = curr[1]
-        curr[1] = prev
-        prev = curr
-        curr = next_node
-    return prev
+def red(s):
+    stack = []
+    
+    for c in s:
+        if stack and stack[-1] == c:
+            stack.pop()
+        else:
+            stack.append(c)
 
-def printList(head):
-    while head:
-        print(head[0], end=" -> ")
-        head = head[1]
-    print("None")
+    r = ''
+    for char in stack:
+        r += char
 
-head = [1, [2, [3, [4, [5, None]]]]]
+    return r
 
-print("Original List:")
-printList(head)
+i1 = "aabccd"
+r1 = red(i1)
+print(f"Input: '{i1}' -> Output: '{r1}'")
 
-head = reverseList(head)
-
-print("Reversed List:")
-printList(head)
+i2 = "aabbccd"
+r2 = red(i2)
+print(f"Input: '{i2}' -> Output: '{r2}'")
